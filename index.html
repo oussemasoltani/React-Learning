@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- <ul id="list"></ul>-->
+
+    <script type="text/babel">
+      /*
+       const elemLi = document.createElement("li");
+       elemLi.innerHTML = "tunisia";
+
+       const list = document.getElementById("list");
+       list.appendChild(elemLi);
+
+       /*
+       const element = React.createElement(
+         "ul",
+         { id: "list" },
+         React.createElement("li", null, "tunisia"),
+         React.createElement("li", null, "Algeria")
+       );
+
+       */
+      class About extends React.Component {
+        state = {
+          country: ["Ghardimaou", "Bizerta", "Columbia"],
+        };
+        render() {
+          return <div>{this.state.country}</div>;
+        }
+      }
+
+      class Home extends React.Component {
+        constructor(props) {
+          super(props);
+          this.decrement = this.decrement.bind(this);
+          this.increment = this.increment.bind(this);
+        }
+
+        //private state
+        state = {
+          user: {
+            name: "Oussama",
+            lastname: "Soltani",
+            age: 21,
+            country: "ghardimaou",
+          },
+          x: 0,
+          website: "winopapa.com",
+        };
+
+        changeName = (e) => {
+          console.log(e.target.value);
+          this.setState({
+            user: {
+              ...this.state.user,
+              name: e.target.value,
+            },
+            x: this.state.x + 1,
+          });
+        };
+
+        // this.setState ==> event button or faza
+
+        // constructor render
+
+        increment() {
+          this.setState({
+            x: this.state.x + 1,
+          });
+        }
+
+        //arrow function
+        decrement() {
+          this.setState({
+            x: this.state.x - 1,
+          });
+        }
+
+        render() {
+          return (
+            <div>
+              <p>{this.state.user.name}</p> <br />
+              <p> {this.state.user.lastname} </p>
+              <p> {this.state.user.age} </p>
+              <p>{this.state.x}</p>
+              <input type="text" onChange={this.changeName} />
+            </div>
+          );
+        }
+      }
+
+      //pros public
+      //state object parcontre techtaghel ken f class mabda2ia taw walla fama react hook
+
+      const element = <h1>Welcome to winopapa</h1>;
+
+      ReactDOM.render(<Home />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
